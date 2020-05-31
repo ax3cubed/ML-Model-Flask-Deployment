@@ -4,22 +4,23 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 
-dataset = pd.read_csv('hiring.csv')
+dataset = pd.read_csv('data.csv')
 
-dataset['experience'].fillna(0, inplace=True)
+dataset['Ag'].fillna(0, inplace=True)
+dataset['Au'].fillna(0, inplace=True)
+dataset['Cd'].fillna(0, inplace=True)
+dataset['Co'].fillna(0, inplace=True)
+dataset['Cu'].fillna(0, inplace=True)
+dataset['Fe'].fillna(0, inplace=True)
+dataset['Mn'].fillna(0, inplace=True)
+dataset['Ni'].fillna(0, inplace=True)
+dataset['Pb'].fillna(0, inplace=True)
 
-dataset['test_score'].fillna(dataset['test_score'].mean(), inplace=True)
+dataset['Zn'].fillna(dataset['Zn'].mean(), inplace=True)
 
 X = dataset.iloc[:, :3]
 
-#Converting words to integer values
-def convert_to_int(word):
-    word_dict = {'one':1, 'two':2, 'three':3, 'four':4, 'five':5, 'six':6, 'seven':7, 'eight':8,
-                'nine':9, 'ten':10, 'eleven':11, 'twelve':12, 'zero':0, 0: 0}
-    return word_dict[word]
-
-X['experience'] = X['experience'].apply(lambda x : convert_to_int(x))
-
+ 
 y = dataset.iloc[:, -1]
 
 #Splitting Training and Test Set

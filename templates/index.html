@@ -1,36 +1,157 @@
 <!DOCTYPE html>
-<html >
+<html>
 <!--From https://codepen.io/frytyler/pen/EGdtg-->
+
 <head>
-  <meta charset="UTF-8">
-  <title>ML API</title>
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Adeola Akinwole">
+  <meta name="generator" content="Jekyll v4.0.1">
+  <title>Trace Predict</title>
+
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/form-validation.css') }}">
 </head>
 
-<body>
- <div class="login">
-	<h1>Salary Analysis</h1>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="experience" placeholder="Experience" required="required" />
-        <input type="text" name="test_score" placeholder="Test Score" required="required" />
-		<input type="text" name="interview_score" placeholder="Interview Score" required="required" />
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
+<body class="bg-light">
+  <div class="container">
+    <div class="py-5 text-center">
+      <h2>Implementation of a machine learning algorithm to predict trace elements in stream sediment in South Western
+        Nigeria</h2>
+      <p class="lead"> <h3>
+        Ag (ppm) Au (ppb) Cd (ppm) Co (ppm) Cu (ppm) Fe (%) Mn (ppm) Ni (ppm) Pb (ppm) Zn (ppm)
+      </h3></p>
+    </div>
+    <div class="row">
+     
+      <div class="col-md-12 order-md-1">
+        <h4 class="mb-3">Trace Elements</h4>
+        <form class="needs-validation" novalidate action="{{ url_for('predict')}}" method="post">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="ag">Ag (ppm)</label>
+              <input type="text" class="form-control" name="ag" placeholder="Ag (ppm)" required="required" />
+              <div class="invalid-feedback">
+                Valid Ag (ppm) is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="au">Au (ppm)</label>
+              <input type="text" class="form-control" name="au" placeholder="Au (ppb)" required="required" />
+              <div class="invalid-feedback">
+                Valid Au (ppb) is required.
+              </div>
+            </div>
+        
+            
+                      
 
-   <br>
-   <br>
-   {{ prediction_text }}
+            <div class="col-md-6 mb-3">
+              <label for="cd">Cd (ppm)</label>
+              <input type="text" class="form-control" name="cd" placeholder="Cd (ppm)" required="required" />
+              <div class="invalid-feedback">
+                Valid Cd (ppm) is required.
+              </div>
+            </div>
+            
+           
+            <div class="col-md-6 mb-3">
+              <label for="cu">Cu (ppm)</label>
+              <input type="text" class="form-control" name="cu" placeholder="Cu (ppm)" required="required" />
 
- </div>
+              <div class="invalid-feedback">
+                Valid Co (ppm) is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="fe">Fe (%)</label>
+              <input type="text" class="form-control" name="fe" placeholder="Fe (%)" required="required" /> 
+              <div class="invalid-feedback">
+                Valid Fe (%) is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="mn">Mn (ppm)</label>
+              <input type="text" name="mn" class="form-control" placeholder="Mn (ppm)" required="required" />
+             
+              <div class="invalid-feedback">
+                Valid Mn (ppm) is required.
+              </div>
+            </div>
+            
+          
+            <div class="col-md-6 mb-3">
+              <label for="ni">Ni (ppm)</label>
+              <input type="text" name="ni" class="form-control" placeholder="Ni (ppm)" required="required" />
+             
+              <div class="invalid-feedback">
+                Valid Ni (ppm) is required.
+              </div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="pb">Pb (ppm)</label>
+              <input type="text" name="pb" class="form-control" placeholder="Pb (ppm)" required="required" />
+            
+              <div class="invalid-feedback">
+                Valid Pb (ppm) is required.
+              </div>
+            </div>
+            <!-- <div class="col-md-6 mb-3">
+              <label for="zn">Zn (ppm)</label>
+              <input type="text" class="form-control" name="zn" placeholder="Zn (ppm)" required="required" />
+    
+              <div class="invalid-feedback">
+                Valid Zn (ppm) is required.
+              </div>
+            </div> -->
+          </div>
+  
+       
+      
+           <hr class="mb-4">
+           <button type="submit" class="btn btn-primary btn-lg btn-block">Predict</button>
+          
+        </form>
+      </div>
+    </div>
+    <div class="login">
+      
+
+     
+      <br>
+      <br>
+      {{ prediction_text }}
+
+    </div>
 
 
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../static/js/jquery.slim.min.js"><\/script>')</script>
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+<script src="{{ url_for('static', filename='js/form-validation.js') }}"></script>
+</body>
+
 </html>
