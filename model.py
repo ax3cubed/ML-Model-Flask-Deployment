@@ -16,9 +16,9 @@ dataset['Mn'].fillna(0, inplace=True)
 dataset['Ni'].fillna(0, inplace=True)
 dataset['Pb'].fillna(0, inplace=True)
 
-dataset['Zn'].fillna(dataset['Zn'].mean(), inplace=True)
+# dataset['Zn'].fillna(dataset['Zn'].mean(), inplace=True)
 
-X = dataset.iloc[:, :3]
+X = dataset.iloc[:, :9]
 
  
 y = dataset.iloc[:, -1]
@@ -37,4 +37,4 @@ pickle.dump(regressor, open('model.pkl','wb'))
 
 # Loading model to compare the results
 model = pickle.load(open('model.pkl','rb'))
-print(model.predict([[2, 9, 6]]))
+print(model.predict([[2, 9, 6,5,7,5,4,6,5]]))
